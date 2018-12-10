@@ -14,15 +14,17 @@ $db = Database::getInstance();
 
 try {
 	$stmt = $db->prepare( 'SELECT * FROM user' );
+
 	$stmt->execute();
 
-	$result = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+	//$result = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
 
-	/*$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
+	//$result = $stmt->fetchAll( PDO::FETCH_OBJ );
 
-	$result = $stmt->fetchAll( PDO::FETCH_OBJ );*/
+	$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
 
-} catch ( Exception $e ) {
+
+} catch ( PDOException $e ) {
 
 	Helper::printException( $e );
 
